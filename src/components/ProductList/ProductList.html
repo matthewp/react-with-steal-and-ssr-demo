@@ -11,6 +11,25 @@
   import React from 'react';
   import ReactDOM from 'react-dom';
   import ProductList from '~/src/components/ProductList/';
+  import { products } from '~/src/models/fixtures/products';
+  const render = () => {
+    ReactDOM.render(<ProductList { ...props } />, document.getElementById('demo'));
+  }
+  const cart = window.cart = [];
+  const addToCart = (product) => {
+    cart.push(product);
+    render()
+  }
+  const removeFromCart = (product) => {
+    cart.splice(cart.indexOf(product), 1);
+    render()
+  }
+  const props = {
+    products,
+    cart,
+    addToCart,
+    removeFromCart
+  }
+  render();
 
-  ReactDOM.render(<ProductList />, document.getElementById('demo'));
 </script>

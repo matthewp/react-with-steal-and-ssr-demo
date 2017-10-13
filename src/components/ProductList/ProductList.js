@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import ProductCard from './ProductCard/ProductCard';
 
+const noop = () => {};
+
 class ProductList extends Component {
   render() {
-    const { products = [], addToCart, removeFromCart, cart } = this.props;
+    const {
+      products = [],
+      cart = [],
+      addToCart = noop,
+      removeFromCart = noop
+    } = this.props;
     return (
       <div key="products" className="list-of-products">
         {products.map(product => (

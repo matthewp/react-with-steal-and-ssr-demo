@@ -8,10 +8,14 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^16.0.0",
-    "react-view-model": "^0.5.9"
+    "react-test-renderer": "^16.0.0",
+    "react-view-model": "^0.5.9",
+    "steal-qunit": "^1.0.1"
   },
   "devDependencies": {
     "serve": "^6.2.0",
@@ -24,9 +28,14 @@
     "map": {
       "bootstrap.css": "bootstrap/dist/css/bootstrap.css"
     },
-    "plugins": ["steal-css", "steal-less"],
+    "plugins": [
+      "steal-css",
+      "steal-less"
+    ],
     "babelOptions": {
-      "plugins": ["transform-class-properties"]
+      "plugins": [
+        "transform-class-properties"
+      ]
     }
   }
 }
