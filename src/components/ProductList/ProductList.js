@@ -11,6 +11,7 @@ class ProductList extends Component {
       addToCart = noop,
       removeFromCart = noop
     } = this.props;
+    
     return (
       <div key="products" className="list-of-products">
         {products.map(product => (
