@@ -1,0 +1,27 @@
+.product-card {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 3em;
+
+  .product-image {
+    width: 15rem;
+    margin-right: 1em;
+  }
+
+  .product-description {
+    flex: 1;
+
+    & > footer {
+      display: flex;
+      flex: 0;
+      flex-basis: 100%;
+
+      .price {
+        flex: 1;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

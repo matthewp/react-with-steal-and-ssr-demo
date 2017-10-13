@@ -1,0 +1,16 @@
+<title>CartIcon Demo</title>
+<style>
+  #demo {
+    padding: 5em;
+    max-width: 700px;
+  }
+</style>
+<div id="demo"></div>
+
+<script src="/node_modules/steal/steal.js" main="@empty">
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import ProductList from '~/src/components/ProductList/';
+
+  ReactDOM.render(<ProductList />, document.getElementById('demo'));
+</script>
