@@ -71,8 +71,24 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 
 
 **ViewModels**
-- We're going to take this app and convert it to use react-view-model
-- In the `ProductList` component, switch the React `Component` import for a `react-view-model` import
+- "So now we've got some models, and we're using React for our views, so now we're going to take this app and convert it to use react-view-model to add CanJS View-Models to our React components..."
+- show `App.js` and how the root app handles the `products` and the `cart` in it's state, and passes in `addToCart` and `removeFromCart`
+- We want the `ProductList` component to be more self contained, it should get it's own for it's products (from the `Product` model), and the cart, so that it works on it's own, and will work on its modlet demo page
+- delete the code in `App.js` that passes all the props to `ProductList`, as well as the App component methods and the initial state in the constructor (the whole constructor method), also change `cart.length` to `0` in the `CartIcon` props
+- `npm install react-view-model`
+- In the `ProductList` component, switch the React `Component` import for a `react-view-model` import (use `react-view-model/component`)
+- import and extend `DefineMap` to create a `ViewModel` class, which can be exported
+  and assign a `static` class property `ViewModel` equal to `ViewModel`
+- checkout the ProductList demo page for the rest of this development
+- import `Product` and `Cart` from `~/src/models/` and talk about steals `~` feature
+- in `ViewModel` create a `products` property, make it a computed property that uses the asyncSetValue argument getters get. Set the `Type` to prodcuct list, and say this is nessecary for React-View-Model to work fully. Fetch products with `getList()` and async-ly assign with `setValue` argument. Explain how this combined with the default value get us what we want
+- if there is time, briefly touch on the `Promise Helper` included with React-View-Model that could give you pending and error props
+- implement the `cart` property on the `ViewModel` using the `Type: Cart` definition and the `getCart()` singleton method (explain again, it's just for the demo and cart would propably be more complicated than this)
+- "Now because `this.cart` is just an observable array it's trivial to implement `addToCard` and `removeFromCart` methods on the ViewModel
+- in the `render()` method change `this.props` to `this.viewModel` and checkout the demo page HTML, you can remove all the boilerplate here, and just render the `ProductList` component now, because it's resonsible for it's own stuff, and it's own data store. If this demo page were to make requests, you could use `can-fixture` to mock the request-responses and keep this isolated here.
+- **If there is time:** convert the `Product` model to use ajax and the current fixtures to be a fixture-store and add `can-fixture` to the demo page and main app.
+- Now you can go back to the main app
+
 
 
 
