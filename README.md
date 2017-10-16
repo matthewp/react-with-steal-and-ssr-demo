@@ -47,15 +47,33 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
         - You don’t have to load the whole app, or click around to get in the right state just to work on this small ui peice
 - Steal makes Modlets easy, if you want to talk more about Modlets, come talk to me after the presentation
 
-**Switching to ViewModels**
-
-- We're going to take this app and convert it to use react-view-model
+**Using Models for stores**
 - We're going to use observable **Models** for our "store", React components for our **View**, and use observable **ViewModels** for our views state and a reactive connection to the models
 
 **CanJS Observables**
 - In CanJS we have this concept of observables, values, objects and list that emit events, that you can subscribe to, when their properties change (Just like MobX or the something like the data objects in Vue.js)
 - CanJS has a few but the 2 we are going to use today are `DefineMaps` which act as observable objects, and `DefineLists` which are like observable Arrays
+- So let's set up the Models, we're going to have `Products` which are going to have a `id`, `name`, `image` and description(`desc`) properties
+- Create a `product.js` file, in `src/models/`
+- `npm install can-define`
+- create a `Product` class by importing and extending `DefineMap`, give it `id`, `name`, `image` and `desc` properties, all of type `string`, and export it as default
+- "But what we really want is a list of products, so we create a typed list like this"
+- import and extend a `DefineList` and assign it to the `Product.List` property, mark all it's elements `"#"` as type `Product`
+- "We have a library called can-connect, that let's you connect models to data-sources... and by convention we give `Product` a static `getList` method that returns a ProductList of Products
+- Implement `Product.getList({})`
+- "...Now one cool thing you can do do aid development is give DefineMaps and Lists a name, passed as the first argument" - name both classes
+- "Okay, so now we want a `Cart` Model, and really, when you think about it, a `Cart` is just a list of products..."
+- Create a file name `Cart.js` in `src/models/`
+- import and extend `Product.List` for a `Cart` model.
+- implement a static `getCart()` singleton method, and explain this should probably be something else, but this is just for a demo, so we'll just have it return a singleton instance of `Cart`
+- implement the `total` computed property (times by a hundred to remove JS Floating-Point problems)
+- implement a `has(product)` method (to be used in the ProductList later)
+
+
+**ViewModels**
+- We're going to take this app and convert it to use react-view-model
 - In the `ProductList` component, switch the React `Component` import for a `react-view-model` import
+
 
 
 
