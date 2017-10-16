@@ -9,7 +9,7 @@ export default class App extends Component {
       <div>
         <header>
           <h1>Dog Stuff</h1>
-          <CartIcon count={0} />
+          <CartIcon count={12} />
         </header>
         <main>
           <ProductList />
