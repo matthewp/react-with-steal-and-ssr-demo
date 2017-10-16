@@ -111,12 +111,33 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 ## Stage 4 (Skip for Time)
 
 **Implement the CartList view**
-- If we wanted to keep some state in React, but still interop with React-View-Model well
+- If we wanted to keep some state in React, but still keep interoperability with React-View-Model
+- "So we've got this premade `CartList` component..."
+- Pull in the `CartList` component, put it in `src/components/Cart`
+- modify it to use React-View-Model and DefineMap
 - add an onClick prop callback to CartIcon
 - hook up the `App` state to show the `CartList` component based on that state
 - convert the `CartList` component to use a `ViewModel` as well
 - show how it all works together great still.
 
+## stage 5
+
+**Bundling for production**
+- now you are probably frustrated with how long lading is taking after refresh, and that's because it is individually requesting each script fro all your node_modules and source files over ajax. This is actually something we're currently working on for development, but you need faster builds for production.
+- explain bundling
+- show temporary workaround needed for class properties, explain configuring babel with steal
+- setup `npm build` to use envify and PRODUCTION env-var
+- `"build": "NODE_ENV=production steal-tools build --envify"`
+- show production.html
+
+## Stage 6
+
+**Server-Side Rendering done right**
+
+
+## Stage 7
+
+**Incremental SSR**
 
 
 
