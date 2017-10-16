@@ -1,0 +1,78 @@
+<title>CartIcon Demo</title>
+<style>
+  #demo {
+    padding: 5em;
+    max-width: 400px;
+  }
+
+  .buttons {
+    margin-top: 3em;
+  }
+</style>
+<div id="demo"></div>
+
+<script src="/node_modules/steal/steal.js" main="@empty">
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import CartIcon from '~/src/components/Cart/CartIcon';
+  import CartList from '~/src/components/Cart/CartList';
+
+  class Demo extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        background: '',
+        cartItems: []
+      }
+    }
+
+    handleClick = () => {
+      if (this.state['background'] !== "active") {
+        document.body.style.background = 'yellow';
+        this.setState({ background: 'active' })
+      } else {
+        document.body.style.background = null;
+        this.setState({ background: '' })
+      }
+    }
+
+    increment = () => {
+      this.setState(state => {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, {
+            name: `Product ${Math.random().toString(36).substr(2, 5)}`,
+            price: (Math.random() * 100).toFixed(2)
+          }],
+        }
+      })
+    }
+
+    decrement = () => {
+      this.setState(state => {
+        return {
+          ...state,
+          cartItems: state.cartItems.slice(1),
+        }
+      })
+    }
+
+    render() {
+      return (
+        <div>
+
+          <CartIcon onClick={this.handleClick} cart={this.state.cartItems} />
+
+          <div className="buttons">
+            <button onClick={this.decrement}>-</button>
+            <button onClick={this.increment}>+</button>
+          </div>
+
+          <CartList cart={this.state.cartItems} />
+        </div>
+      )
+    }
+  }
+
+  ReactDOM.render(<Demo />, document.getElementById('demo'));
+</script>
