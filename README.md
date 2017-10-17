@@ -1,7 +1,7 @@
 # react-with-steal-and-ssr-demo
 A demo of a "Cart &amp; Checkout" done with React-View-Model, CanJS and StealJS
 
-_For each stage below switch to the corresponding branch to start (for Stage 1 switch to `stage-1` branch).
+_For each stage below switch to the corresponding branch to start (for Stage 1 switch to `stage-1` branch)._
 
 ## Stage 1
 
@@ -9,7 +9,7 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 
 - starts with empty `index.html` and `index.js`
 - `npm install steal steal-tools react react-dom serve` (serve for serving static)
-- add `script.start` to `package.json` and jsut make value `serve`
+- add `script.start` to `package.json` and just make value `serve`
 - run `npm start` and just point browser to blank HTML page
 - create `script` tag in index.html and set `src` to `/node_modules/steal/steal.js`
 - set `main` attribute on `script` tag to `index` meaning module name for `index.js`
@@ -106,7 +106,7 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 - talk about how you can access it on the viewModel, and show how implementing a getter, using the `lastSetValue` arg, can give you access to it, even if you want to override it for your components
 - then fix it up to just use `this.cart.length`, remove the prop assignment from`App.js` and show it working as expected.
 - comment on how simple the `App` component is now, and how the other components can now be worked on independantly because they are truly componentized
-- note how you don't need a spectial `<Provider />` component to provide context to the components, that they connect to teir own state through `Models`, and their viewModel holds the view state and does any conversions nessecary from Model to View
+- note how you don't need a spectial `<Provider />` component to provide Reacts **"context"** object to the components, that they connect to their state through `Models`, and their viewModel holds the view's state and does any conversions nessecary from Model to View.
 
 ## Stage 4 (Skip for Time)
 
@@ -124,7 +124,7 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 - hook up the `App` state to toggle the `CartList` component based on that state
 - show how it all works together great still, emphasize that because the Cart model is the single source of truth, eveything just React-ivly updates
 
-## stage 5
+## Stage 5
 
 **Bundling for production**
 - "now you are probably frustrated with how long lading is taking after refresh, and that's because it is individually requesting each script for all your node_modules and source files over ajax. This is actually something we're currently working on for development, but you need faster builds for production..."
