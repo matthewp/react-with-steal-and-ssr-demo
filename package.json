@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve"
+    "start": "serve",
+    "build": "NODE_ENV=production steal-tools build --envify"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -29,14 +30,9 @@
     "map": {
       "bootstrap.css": "bootstrap/dist/css/bootstrap.css"
     },
-    "plugins": [
-      "steal-css",
-      "steal-less"
-    ],
+    "plugins": ["steal-css", "steal-less"],
     "babelOptions": {
-      "plugins": [
-        "transform-class-properties"
-      ]
+      "plugins": ["transform-class-properties"]
     }
   }
 }

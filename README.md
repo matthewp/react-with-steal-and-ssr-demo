@@ -131,16 +131,19 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 - explain steal-tools bundling
 - show temporary workaround needed for class properties, explain configuring babel with steal
 - setup `npm build` to use envify and PRODUCTION env-var
-- `"build": "NODE_ENV=production steal-tools build --envify"`
-- show production.html
+- add `"build": "NODE_ENV=production steal-tools build --envify"` to package.json `build`
+- add a `production.html` for demo
+- copy the contents of `index.html` into `production.html` and change the `src` path to `/node_modules/steal/steal.production.js` (add `.production`)
+- navigate to `production.html`, show the speed difference, and the network tab
+
 
 ## Stage 6
 
 **Server-Side Rendering done right**
 
 - "Time is Money: we’ve all seen the reports where for E-Commerce sites milliseconds can be worth millions" (site)
-- "SSR is important for performance especially on mobile and in areas with slow connections"
-- "current React SSR solutions expect you to change how you build your SPAs, you need to gather all your initial state first then render that to the client as a string, but that’s not how we traditionally build SPAs"
+- "SSR is important for performance, especially on mobile and in areas with slow connections"
+- "current React SSR solutions expect you to change how you build your SPAs, you need to gather all your initial state first then render your app component tree, and send that to the client as a string, but that’s not how we traditionally build SPAs"
 - when we architect apps the CanJS way, each of our components fetch their own data ,mostly asynchronously, how can we get server side rendering to work with this crazy set up
 - Describe how our Done-SSR works with zones to trap async events, actually server side render, and stream the resulting HTML to the server along with any pushes
     - We run the rendering for each request in its own context
