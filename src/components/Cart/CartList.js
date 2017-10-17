@@ -1,11 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Component from 'react-view-model/component';
+import Cart from '../../models/cart';
+import DefineMap from 'can-define/map/map';
 import { Button, Table } from 'react-bootstrap';
 import 'bootstrap.css';
 import './Cart.less';
 
+export const ViewModel = DefineMap.extend({
+  cart: {
+    Type: Cart,
+    value: Cart.getCart()
+  }
+});
+
 class CartList extends Component {
+  static ViewModel = ViewModel;
+
   render() {
-    const { cart = [] } = this.props;
+    const { cart = [] } = this.viewModel;
     return (
       <div className="cart-list">
         <Table>

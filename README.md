@@ -110,21 +110,25 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 
 ## Stage 4 (Skip for Time)
 
-**Implement the CartList view**
+**Implement the CartList view with React View Model**
 - If we wanted to keep some state in React, but still keep interoperability with React-View-Model
 - "So we've got this premade `CartList` component..."
-- Pull in the `CartList` component, put it in `src/components/Cart`
+- Pull in the `CartList` component (and `Cart.html` demo page), put it in `src/components/Cart`
+- show the coponent and the demo page, that produces random cart items
 - modify it to use React-View-Model and DefineMap
-- add an onClick prop callback to CartIcon
-- hook up the `App` state to show the `CartList` component based on that state
-- convert the `CartList` component to use a `ViewModel` as well
-- show how it all works together great still.
+    - import `react-view-model`, `can-define/map/map` and the `~/src/model/cart` and create a `ViewModel` like before that has a `cart` property with a value `Cart.getCart()` (don't forget `Type:Cart`)
+- check out the demo, see that the Total is now working, and talk about how CanJS observables with a `Type` definition perform automatic conversion
+- "But now, what if we only want to show the carlist when someone click on the CartIcon..."
+- add an onClick prop callback to CartIcon (show demo)
+- "Now, this doesn't belong in the viewModels, this should be in the `App` components view model really, but just to show that you don't have to make everything with RVM..."
+- hook up the `App` state to toggle the `CartList` component based on that state
+- show how it all works together great still, emphasize that because the Cart model is the single source of truth, eveything just React-ivly updates
 
 ## stage 5
 
 **Bundling for production**
-- now you are probably frustrated with how long lading is taking after refresh, and that's because it is individually requesting each script fro all your node_modules and source files over ajax. This is actually something we're currently working on for development, but you need faster builds for production.
-- explain bundling
+- "now you are probably frustrated with how long lading is taking after refresh, and that's because it is individually requesting each script for all your node_modules and source files over ajax. This is actually something we're currently working on for development, but you need faster builds for production..."
+- explain steal-tools bundling
 - show temporary workaround needed for class properties, explain configuring babel with steal
 - setup `npm build` to use envify and PRODUCTION env-var
 - `"build": "NODE_ENV=production steal-tools build --envify"`

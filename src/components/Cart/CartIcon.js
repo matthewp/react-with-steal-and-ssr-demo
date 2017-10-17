@@ -22,10 +22,10 @@ export class CartIcon extends Component {
   static ViewModel = ViewModel;
 
   render() {
-    const { count } = this.viewModel;
+    const { count, onClick } = this.viewModel;
 
     return (
-      <button className="cart-icon">
+      <button className="cart-icon" onClick={onClick}>
         <Glyphicon glyph="shopping-cart" />
         <Badge>{count}</Badge>
       </button>
