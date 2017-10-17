@@ -138,10 +138,40 @@ _For each stage below switch to the corresponding branch to start (for Stage 1 s
 
 **Server-Side Rendering done right**
 
+- "Time is Money: we’ve all seen the reports where for E-Commerce sites milliseconds can be worth millions" (site)
+- "SSR is important for performance especially on mobile and in areas with slow connections"
+- "current React SSR solutions expect you to change how you build your SPAs, you need to gather all your initial state first then render that to the client as a string, but that’s not how we traditionally build SPAs"
+- when we architect apps the CanJS way, each of our components fetch their own data ,mostly asynchronously, how can we get server side rendering to work with this crazy set up
+- Describe how our Done-SSR works with zones to trap async events, actually server side render, and stream the resulting HTML to the server along with any pushes
+    - We run the rendering for each request in its own context
+    - We track any fetches, XHRs, or setTimeouts or any async events and wait until they’ve settled or timeout
+    - Using HTTP/2 we push response streams immediately, removing the latency time (and there’s a fallback for HTTP/1 too!)
+    - When everything settled we push the HTML to the client
+- **Highlight**: You don’t need to change your code for SSR, it just works
+
+- DO WHATEVER NEEDS TO BE DONE TO GET SSR WORKING
 
 ## Stage 7
 
 **Incremental SSR**
+- "But, when every millisecond counts, and you need that little ewxtra boost, to show your users something a little bit faster... introducing our experimental super boost: Incrememntal SSR"
+- "Now with the normal SSR, you have to wait for all of your data requests to either resolve or timeout, but what if your query took a long time, or certain items in the page just took a lot longer to get the data for than others, you want your users to see something as fast as possible... so we got this crazy idea"
+
+- "To help explain the point, let's slow down the API server artificially, so we might actually see the difference"
+- Slow down server API artificially with a `setTimeout`
+
+- Explain the technique
+    - Show how it pushes the “initial state” html before requests are made, along with the mutation code
+    - As results come in, push mutation instructions in the stream
+    - talk about how the requests for the js, css and other resources are all pushed with H/2 push, so the client starts as soon as possible, but so are any API requests
+    - so the request starts on the server, but then just get's passed up as a stream to the client
+    - Talk about how when the client catches up, it just takes over, it's the same response stream, so when it catches up, it just takes over
+    - this technique is specifically for squeezing those extra milliseconds of load time out before the page’s JavaScript takes over (could be worth millions if you are at a large enough scale)
+- "Now what code do we need to change to get this done"
+- Nothing on the client (WIN!)
+
+- DO WHATEVER NEEDS TO BE DONE TO GET SSR WORKING
+
 
 
 
