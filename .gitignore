@@ -59,3 +59,5 @@ typings/
 
 # Editor / IDE specific files or directories
 .vs-code
+
+dist/
